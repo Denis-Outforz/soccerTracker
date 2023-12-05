@@ -1,0 +1,88 @@
+.team-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+  }
+  
+  .team-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .player-selector-container {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Изменение на вертикальное расположение */
+    justify-content: flex-end; /* Расположение внизу контейнера */
+    height: 100%;
+  }
+  
+  .player-list {
+    display: flex;
+    flex-wrap: wrap; /* Добавлено свойство flex-wrap */
+    align-items: left; /* Выравнивание по центру по вертикали */
+  }
+  
+  .selected-player-container {
+    text-align: center;
+  }
+  
+/* Добавлены стили для выбранного и не выбранного состояния */
+.player {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.home-player {
+  background-color: #3498db;
+}
+
+.away-player {
+  background-color: #e74c3c;
+}
+
+.selected {
+  background-color: rgb(41, 95, 5);
+}
+  
+  .team-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .home-button {
+    background-color: #3498db;
+    color: #fff;
+  }
+  
+  .away-button {
+    background-color: #f1c40f;
+    color: #fff;
+  }
+  .team-button {
+    cursor: pointer;
+  }
+  
+  .selected {
+    background-color: rgb(41, 95, 5) /* Цвет для выбранного элемента */
+  }
+
+  .time-toggle-container label {
+    color: #fff; /* Белый цвет текста */
+    margin-right: 10px; /* Добавьте отступ между радиокнопками */
+  }

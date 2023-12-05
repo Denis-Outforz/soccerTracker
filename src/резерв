@@ -1,0 +1,24 @@
+const newData = {
+      id: tableData.length + 1,
+      period: eventtime,
+      team: selectedTeam,
+      playerNumber: selectedPlayer,
+      time: playerRef.current.getCurrentTime(),
+      x: mouseCoords.x * 100,
+      y: mouseCoords.y * 100,
+      event: selectedEvent || '',
+      typeEvent: selectedSubEvent || '',
+      subType: selectedSubSubEvent || '',
+    };
+
+    if (selectedEvent === 'Goal') {
+      newData.typeEvent = '';
+      newData.subType = '';
+    }
+
+    setTableData((prevData) => [...prevData, newData]);
+
+    setSelectedEvent(null);
+    setSelectedSubEvent(null);
+    setSelectedSubSubEvent(null);
+    setSelectedPlayer(null);
