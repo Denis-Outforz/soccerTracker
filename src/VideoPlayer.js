@@ -80,7 +80,7 @@ const VideoPlayer = () => {
     setSelectedEvent(null);
     setSelectedSubEvent(null);
     setSelectedSubSubEvent(null);
-    setSelectedPlayer(null);
+    
 
     setPoint({
       x: mouseCoords.x * 100,
