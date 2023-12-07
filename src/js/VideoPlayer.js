@@ -63,9 +63,9 @@ const VideoPlayer = () => {
   }
 
   const handleFieldClick = () => {
-    setSelectedEvent(null)
-    setSelectedSubEvent(null)
-    setSelectedSubSubEvent(null)
+    // setSelectedEvent(null)
+    // setSelectedSubEvent(null)
+    // setSelectedSubSubEvent(null)
 
     setPoint({
       x: mouseCoords.x * 100,
