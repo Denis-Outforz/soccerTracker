@@ -5,6 +5,7 @@ import '../css/VideoPlayer.css'
 import PlayerSelector from './PlayerSelector'
 import FootballEventController from './FootballEventController'
 import TableComponent from './TableComponent'
+import HandleEvents from './HandleEvents'
 import * as events from 'events'
 
 const VideoPlayer = () => {
@@ -62,6 +63,10 @@ const VideoPlayer = () => {
   }
 
   const handleFieldClick = () => {
+    setSelectedEvent(null)
+    setSelectedSubEvent(null)
+    setSelectedSubSubEvent(null)
+
     setPoint({
       x: mouseCoords.x * 100,
       y: mouseCoords.y * 100,
@@ -69,33 +74,6 @@ const VideoPlayer = () => {
       playerNumber: selectedPlayer,
     })
   }
-
-  const handleEventButton = (selectedEvent, selectedSubEvent, selectedSubSubEvent) => {
-    if (!point) {
-      alert('No point selected')
-    } else {
-      const newData = {
-        id: tableData.length + 1,
-        half: eventtime,
-        team: selectedTeam,
-        playerNumber: selectedPlayer,
-        time: playerRef.current.getCurrentTime(),
-        x: point.x,
-        y: point.y,
-        event: selectedEvent || '',
-        typeEvent: selectedSubEvent || '',
-        subType: selectedSubSubEvent || '',
-      }
-
-      setTableData((prevData) => [...prevData, newData])
-
-      setSelectedEvent(null)
-      setSelectedSubEvent(null)
-      setSelectedSubSubEvent(null)
-      setSelectedPlayer(null)
-    }
-  }
-
   const handlePlay = () => {
     setIsPlaying(true)
     const footballField = document.querySelector('.football-field')
@@ -309,12 +287,6 @@ const VideoPlayer = () => {
     cKeyPressed,
   ])
 
-  const handleSelectEvent = (event, subEvent, subSubEvent) => {
-    setSelectedEvent(event)
-    setSelectedSubEvent(subEvent)
-    setSelectedSubSubEvent(subSubEvent)
-  }
-
   const handleKeyPress = (event) => {
     if (event.code === 'Space') {
       setIsPlaying(!isPlaying)
@@ -419,7 +391,11 @@ const VideoPlayer = () => {
       handleSeek(-1)
     }
   }
-
+  const handleSelectEvent = (event, subEvent, subSubEvent) => {
+    setSelectedEvent(event)
+    setSelectedSubEvent(subEvent)
+    setSelectedSubSubEvent(subSubEvent)
+  }
   const [playing, setPlaying] = useState(false)
 
   const handleSpacePress = (event) => {
@@ -475,7 +451,6 @@ const VideoPlayer = () => {
         setLastSeekTime(Date.now())
       }
     })
-
     return () => {
       document.removeEventListener('keydown', handleKeyPress)
       document.removeEventListener('keydown', handleSpacePress)
@@ -583,49 +558,25 @@ const VideoPlayer = () => {
                 setSelectedEvent(selectedEvent)
                 setSelectedSubEvent(selectedSubEvent)
                 setSelectedSubSubEvent(selectedSubSubEvent)
-
-                const subEventsWithoutSubSub = [
-                  'Shot against',
-                  'Goal',
-                  'Goal conceded',
-                  'Own goal',
-                  'Assist',
-                  'Shot assist',
-                  'Second assist',
-                  'Third assist',
-                  'Recovery',
-                  'Loss ball',
-                  'Counter pressing recovery',
-                  'Transition',
-                  'Counterattack',
-                  'Acceleration',
-                  'Progressive run',
-                  'Far Post Corner',
-                  'Near Post Corner',
-                  'Medium Corner',
-                  'Top-of-the-Arc Corner',
-                  'Short Corner',
-                  'Skip Header Corner',
-                  'Direct Score Corner ',
-                  'Hand ball',
-                  'Simulation',
-                  'Protest',
-                  'Time lost',
-                  'Late card',
-                  'Out of play',
-                  'Red card',
-                  'Yellow card',
-                  'Ball out',
-                  'Offside',
-                  'Game interruption',
-                ]
-
-                if (subEventsWithoutSubSub.includes(selectedSubEvent) || selectedSubSubEvent) {
-                  handleEventButton(selectedEvent, selectedSubEvent, selectedSubSubEvent)
-                }
               }}
             />
-            .
+            <HandleEvents
+              selectedEvent={selectedEvent}
+              selectedSubEvent={selectedSubEvent}
+              selectedSubSubEvent={selectedSubSubEvent}
+              tableData={tableData}
+              eventtime={eventtime}
+              selectedTeam={selectedTeam}
+              selectedPlayer={selectedPlayer}
+              playerRef={playerRef}
+              point={point}
+              prevData={tableData}
+              setTableData={setTableData}
+              setSelectedPlayer={setSelectedPlayer}
+              setSelectedEvent={setSelectedEvent}
+              setSelectedSubEvent={setSelectedSubEvent}
+              setSelectedSubSubEvent={setSelectedSubSubEvent}
+            />
           </div>
           <div className={`seek ${isFieldVisible ? 'show' : ''}`}>
             <style>

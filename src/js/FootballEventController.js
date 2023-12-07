@@ -88,11 +88,11 @@ const FootballEventController = ({ onEventSelected }) => {
       subEvents: [
         {
           name: 'Under pressure',
-          subSubEvents: ['Succesfull Reception', 'Missed Reception'],
+          subSubEvents: ['Successful Reception', 'Missed Reception'],
         },
         {
           name: 'Open play',
-          subSubEvents: ['Succesfull Reception', 'Missed Reception'],
+          subSubEvents: ['Successful Reception', 'Missed Reception'],
         },
       ],
     },
@@ -117,11 +117,11 @@ const FootballEventController = ({ onEventSelected }) => {
       name: 'Gk Action',
       subEvents: [
         { name: 'Shot against', subSubEvents: [] },
-        { name: 'Save', subSubEvents: ['Succesful', 'Unsuccessful'] },
-        { name: 'Reflexes save', subSubEvents: ['Succesful', 'Unsuccessful'] },
+        { name: 'Save', subSubEvents: ['Successful', 'Unsuccessful'] },
+        { name: 'Reflexes save', subSubEvents: ['Successful', 'Unsuccessful'] },
         {
           name: 'Goalkeeper Leaving Line',
-          subSubEvents: ['Succesful', 'Unsuccessful'],
+          subSubEvents: ['Successful', 'Unsuccessful'],
         },
       ],
     },
@@ -145,14 +145,14 @@ const FootballEventController = ({ onEventSelected }) => {
     {
       name: 'Possession',
       subEvents: [
-        { name: 'Touch', subSubEvents: ['Succesful', 'Unsuccessful'] },
-        { name: 'Touch in box', subSubEvents: ['Succesful', 'Unsuccessful'] },
+        { name: 'Touch', subSubEvents: ['Successful', 'Unsuccessful'] },
+        { name: 'Touch in box', subSubEvents: ['Successful', 'Unsuccessful'] },
         { name: 'Recovery', subSubEvents: [] },
         { name: 'Loss ball', subSubEvents: [] },
         { name: 'Counter pressing recovery', subSubEvents: [] },
         { name: 'Transition', subSubEvents: [] },
         { name: 'Counterattack', subSubEvents: [] },
-        { name: 'Dribble', subSubEvents: ['Succesful', 'Unsuccessful'] },
+        { name: 'Dribble', subSubEvents: ['Successful', 'Unsuccessful'] },
         { name: 'Acceleration', subSubEvents: [] },
         { name: 'Progressive run', subSubEvents: [] },
       ],
@@ -170,40 +170,40 @@ const FootballEventController = ({ onEventSelected }) => {
     {
       name: 'Clearance',
       subEvents: [
-        { name: 'Under pressure', subSubEvents: ['Succesful', 'Unsuccessful'] },
-        { name: 'Open play', subSubEvents: ['Succesful', 'Unsuccessful'] },
+        { name: 'Under pressure', subSubEvents: ['Successful', 'Unsuccessful'] },
+        { name: 'Open play', subSubEvents: ['Successful', 'Unsuccessful'] },
       ],
     },
     {
       name: 'Interception',
       subEvents: [
-        { name: 'First Third', subSubEvents: ['Succesful', 'Unsuccessful'] },
-        { name: 'Second Third', subSubEvents: ['Succesful', 'Unsuccessful'] },
-        { name: 'Final Third', subSubEvents: ['Succesful', 'Unsuccessful'] },
+        { name: 'First Third', subSubEvents: ['Successful', 'Unsuccessful'] },
+        { name: 'Second Third', subSubEvents: ['Successful', 'Unsuccessful'] },
+        { name: 'Final Third', subSubEvents: ['Successful', 'Unsuccessful'] },
       ],
     },
     {
       name: 'Block Shot',
       subEvents: [
-        { name: 'Leg', subSubEvents: ['Succesful', 'Unsuccessful'] },
-        { name: 'Body', subSubEvents: ['Succesful', 'Unsuccessful'] },
-        { name: 'Head', subSubEvents: ['Succesful', 'Unsuccessful'] },
+        { name: 'Leg', subSubEvents: ['Successful', 'Unsuccessful'] },
+        { name: 'Body', subSubEvents: ['Successful', 'Unsuccessful'] },
+        { name: 'Head', subSubEvents: ['Successful', 'Unsuccessful'] },
       ],
     },
     {
       name: 'Tackling',
       subEvents: [
-        { name: 'First Third', subSubEvents: ['Succesful'] },
-        { name: 'Second Third', subSubEvents: ['Succesful'] },
-        { name: 'Final Third', subSubEvents: ['Succesful'] },
+        { name: 'First Third', subSubEvents: ['Successful'] },
+        { name: 'Second Third', subSubEvents: ['Successful'] },
+        { name: 'Final Third', subSubEvents: ['Successful'] },
       ],
     },
     {
       name: 'Sliding tackle',
       subEvents: [
-        { name: 'First Third', subSubEvents: ['Succesful', 'Unsuccessful'] },
-        { name: 'Second Third', subSubEvents: ['Succesful', 'Unsuccessful'] },
-        { name: 'Final Third', subSubEvents: ['Succesful', 'Unsuccessful'] },
+        { name: 'First Third', subSubEvents: ['Successful', 'Unsuccessful'] },
+        { name: 'Second Third', subSubEvents: ['Successful', 'Unsuccessful'] },
+        { name: 'Final Third', subSubEvents: ['Successful', 'Unsuccessful'] },
       ],
     },
     {
@@ -215,7 +215,7 @@ const FootballEventController = ({ onEventSelected }) => {
         { name: 'Top-of-the-Arc Corner', subSubEvents: [] },
         { name: 'Short Corner', subSubEvents: [] },
         { name: 'Skip Header Corner', subSubEvents: [] },
-        { name: 'Direct Score Corner ', subSubEvents: [] },
+        { name: 'Direct Score Corner', subSubEvents: [] },
       ],
     },
     {
@@ -310,7 +310,7 @@ const FootballEventController = ({ onEventSelected }) => {
     }
   }
 
-  const handleSubEventClick = (subEventName, subSubEvents) => {
+  const handleSubEventClick = (subEventName) => {
     setSelectedSubEvent(subEventName)
     setSelectedSubSubEvent(null)
     onEventSelected(selectedEvent, subEventName, null)
