@@ -572,7 +572,6 @@ const VideoPlayer = () => {
               point={point}
               prevData={tableData}
               setTableData={setTableData}
-              setSelectedPlayer={setSelectedPlayer}
               setSelectedEvent={setSelectedEvent}
               setSelectedSubEvent={setSelectedSubEvent}
               setSelectedSubSubEvent={setSelectedSubSubEvent}
@@ -586,6 +585,7 @@ const VideoPlayer = () => {
         max-width: 350px;
         height: 40px;
         margin: 0 auto;
+        transform: translateY(60%);
       }
       .seek button {
         flex: 1;

@@ -1,18 +1,17 @@
-import {useEffect } from 'react'
+import { useEffect } from 'react'
 
 const HandleEvents = ({
   selectedEvent,
   selectedSubEvent,
   selectedSubSubEvent,
   tableData,
-  eventtime,
+  eventtime: eventTime,
   selectedTeam,
   selectedPlayer,
   playerRef,
   point,
   prevData,
   setTableData,
-  setSelectedPlayer,
   setSelectedEvent,
   setSelectedSubEvent,
   setSelectedSubSubEvent,
@@ -53,53 +52,29 @@ const HandleEvents = ({
     'Game interruption',
   ]
   useEffect(() => {
-    console.log(selectedSubEvent)
-    console.log(subEventsWithoutSubSub.includes(selectedSubEvent))
-    if (subEventsWithoutSubSub.includes(selectedSubEvent) || selectedSubSubEvent) {
-      if (point) {
-        const newData = {
+    if ((subEventsWithoutSubSub.includes(selectedSubEvent) || selectedSubSubEvent) && point) {
+      const newData = [
+        ...prevData,
+        {
           id: tableData.length + 1,
-          half: eventtime,
+          half: eventTime,
           team: selectedTeam,
           playerNumber: selectedPlayer,
           time: playerRef.current.getCurrentTime(),
           x: point.x,
           y: point.y,
-          event: selectedEvent || '',
-          typeEvent: selectedSubEvent || '',
+          event: selectedEvent,
+          typeEvent: selectedSubEvent,
           subType: selectedSubSubEvent || '',
-        }
+        },
+      ]
+      setSelectedEvent(null)
+      setSelectedSubEvent(null)
+      setSelectedSubSubEvent(null)
 
-        setTableData((prevData) => [...prevData, newData])
-
-        // Clearing state
-        setSelectedEvent(null)
-        setSelectedSubEvent(null)
-        setSelectedSubSubEvent(null)
-        // setSelectedPlayer(null)
-      }
+      return setTableData(newData)
     }
-  }, [
-    selectedEvent,
-    selectedSubEvent,
-    selectedSubSubEvent,
-    tableData,
-    eventtime,
-    selectedTeam,
-    selectedPlayer,
-    playerRef,
-    point,
-    prevData,
-    selectedEvent,
-    selectedSubEvent,
-    selectedSubSubEvent,
-    setTableData,
-    setSelectedPlayer,
-    setSelectedEvent,
-    setSelectedSubEvent,
-    setSelectedSubSubEvent,
-  ])
-
+  }, [selectedSubEvent, selectedSubSubEvent])
   return null
 }
 
